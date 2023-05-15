@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Navbar } from "react-bootstrap";
 
-const Header = () => {
+const BaseHeader = () => {
   return (
     <div>
       <header>
@@ -15,4 +15,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default BaseHeader;
