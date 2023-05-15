@@ -4,10 +4,10 @@ import BaseHeader from "./components/BaseHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import BasePagination from "./components/BasePagination";
-import BaseCard from "./components/BaseCard";
 import BaseFilter from "./components/BaseFilter";
 import BaseLoading from "./components/BaseLoading";
 import NoData from "./components/NoData";
+import NobelPrizesDetail from "./components/NobelPrizesDetail";
 
 function App() {
   const [isLoading, setIsLoading] = useState([]);
@@ -81,21 +81,12 @@ function App() {
                   <div>
                     {nobelPrizes.map((nobelPrize, index) => {
                       return (
-                        <div key={index}>
-                          <h3 className="my-4">
-                            <b>
-                              {nobelPrize?.categoryFullName?.en}
-                              {nobelPrize?.awardYear}
-                            </b>
-                          </h3>
-                          {nobelPrize?.laureates?.map((laureate) => {
-                            return (
-                              <div key={laureate.id}>
-                                <BaseCard laureate={laureate} />
-                              </div>
-                            );
-                          })}
-                        </div>
+                        <NobelPrizesDetail
+                          key={index}
+                          awardYear={nobelPrize?.awardYear}
+                          categoryFullName={nobelPrize?.categoryFullName?.en}
+                          laureates={nobelPrize?.laureates}
+                        />
                       );
                     })}
                     <div className="d-flex w-100 justify-content-center mt-4">
