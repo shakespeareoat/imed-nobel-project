@@ -1,4 +1,4 @@
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import "./App.css";
 import BaseHeader from "./components/BaseHeader";
 import { useEffect, useState } from "react";
@@ -6,6 +6,8 @@ import axios from "axios";
 import BasePagination from "./components/BasePagination";
 import BaseCard from "./components/BaseCard";
 import BaseFilter from "./components/BaseFilter";
+import BaseLoading from "./components/BaseLoading";
+import NoData from "./components/NoData";
 
 function App() {
   const [isLoading, setIsLoading] = useState([]);
@@ -70,17 +72,11 @@ function App() {
         <Col md={9} className="p-0">
           <div className="px-4 content">
             {isLoading ? (
-              <div className="text-center mx-auto">
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
-              </div>
+              <BaseLoading />
             ) : (
               <div className="px-4 content">
                 {nobelPrizes.length === 0 ? (
-                  <div>
-                    <h1>ไม่พบข้อมูล</h1>
-                  </div>
+                  <NoData />
                 ) : (
                   <div>
                     {nobelPrizes.map((nobelPrize, index) => {
@@ -88,7 +84,7 @@ function App() {
                         <div key={index}>
                           <h3 className="my-4">
                             <b>
-                              {nobelPrize?.categoryFullName?.en}{" "}
+                              {nobelPrize?.categoryFullName?.en}
                               {nobelPrize?.awardYear}
                             </b>
                           </h3>
