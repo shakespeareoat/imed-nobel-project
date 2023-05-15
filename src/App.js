@@ -59,7 +59,7 @@ function App() {
   }, [currentYear, offset]);
   return (
     <div className="p-4">
-      <BaseHeader />
+      <BaseHeader selectedYear={currentYear} />
       <Row className="my-3 mx-0 p-0">
         <Col md={3} className="bg-light">
           <BaseFilter
